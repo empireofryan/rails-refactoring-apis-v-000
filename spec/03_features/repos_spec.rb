@@ -1,3 +1,4 @@
+
 require_relative '../spec_helper'
 
 describe "Features" do
@@ -30,7 +31,7 @@ describe "Features" do
 
     it "creates a new repo", :type => :request do
       stubbed = stub_request(:post, "https://api.github.com/user/repos").
-        with(body: {"{\"name\":\"a-new-repo\"}"=>nil},
+        with(body: {"name":"a-new-repo"}.to_json,
         :headers => {'Authorization' => "token 1"})
       visit root_path
       fill_in 'new-repo', with: 'a-new-repo'
